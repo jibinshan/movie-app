@@ -114,7 +114,7 @@ const postmovie = async(req,res)=>{
                 if (!file || !file.tempFilePath) {
                     return res.status(400).json("File not provided or invalid");
                   }
-                response =  await cloudinary.uploader.upload(file.tempFilePath)
+                response =  await cloudinary.uploader.upload(file.tempFilePath,{folder:process.cwd() +"tmp"})
                       let genres = await JSON.parse(genre)
                        await movie.create({
                          imagepath:response.url,
@@ -129,7 +129,7 @@ const postmovie = async(req,res)=>{
         }else if(idexist){
            if( req.files){
             const file = req.files.photo
-            response =  await cloudinary.uploader.upload(file.tempFilePath,{folder:"image"})
+            response =  await cloudinary.uploader.upload(file.tempFilePath,{folder:process.cwd() +"tmp"})
                   // console.log(response,"====response");
                   let genres = await JSON.parse(genre)
                    await movie.findByIdAndUpdate(_id,{
