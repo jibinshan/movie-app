@@ -94,11 +94,7 @@ const postmovie = async(req,res)=>{
         }else{
           idexist=null
         }
-        console.log(_id,"===id");
-        console.log(genre,"===parse");
-        console.log(idexist,"===idexist");
-        console.log(req.files,"==img");
-        console.log(title);
+      
        if(title === ""){
           return res.status(400).json("title is required")
         }else if(description?.length > 120 || description?.length === 0) {
