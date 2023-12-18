@@ -134,4 +134,20 @@ const changepassword = async(req,res)=>{
    }
 
 }
-module.exports = {signup,login,changepassword,verifyotp,forgottenpassword} 
+const watchlater = async(req,res)=>{
+    try {
+      const watchlater =  await user.findByIdAndUpdate(req.params.userid,{
+          $push:{
+              movie:req.body.movieid
+          },
+      },
+      {new:true},
+      )
+      console.log(watchlater,"===watchlater");
+      return res.status(200).json(watchlater)
+    } catch (error) {
+      console.log(error);
+      res.status(400).json(error)
+    }
+  }
+module.exports = {signup,login,changepassword,verifyotp,forgottenpassword,watchlater} 

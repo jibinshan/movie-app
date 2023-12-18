@@ -1,6 +1,6 @@
 const express = require("express")
 const user = require("../models/userModel")
-const { signup, login,changepassword,verifyotp,forgottenpassword } = require("../controller/userController")
+const { signup, login,changepassword,verifyotp,forgottenpassword, watchlater } = require("../controller/userController")
 const router = express.Router()
 
 router.get("/",async(req,res)=>{
@@ -40,22 +40,7 @@ router.post("/login",login)
 router.post("/changepassword",changepassword)
 router.post("/verifyotp",verifyotp)
 router.post("/forgottenpassword",forgottenpassword)
-router.put("/watchlater/:userid",async(req,res)=>{
-  try {
-    const watchlater =  await user.findByIdAndUpdate(req.params.userid,{
-        $push:{
-            movie:req.body.movieid
-        },
-    },
-    {new:true},
-    )
-    console.log(watchlater,"===watchlater");
-    return res.status(200).json(watchlater)
-  } catch (error) {
-    console.log(error);
-    res.status(400).json(error)
-  }
-})
+router.put("/watchlater/:userid",watchlater)
 router.delete("/watchlater/:userid",async(req,res)=>{
     try {
         console.log(req.params.userid);
