@@ -9,7 +9,7 @@ function Forgotpassword() {
     const [loading,setLoading] = useState(false)
     const [email,setEmail] = useState("")
     const navigate = useNavigate()
-    const api = "http://localhost:2010/user/forgottenpassword"
+    const api = "https://movie-app-server-jibinshans-projects.vercel.app/user/forgottenpassword"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {

@@ -8,7 +8,7 @@ function Verifyotp() {
     const [loading,setLoading] = useState(false)
     const [otp,setOtp] = useState("")
     const navigate = useNavigate()
-    const api = "http://localhost:2010/user/verifyotp"
+    const api = "https://movie-app-server-jibinshans-projects.vercel.app/user/verifyotp"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {
