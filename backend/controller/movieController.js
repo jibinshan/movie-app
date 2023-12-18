@@ -1,5 +1,6 @@
 const movie = require("../models/movieModel")
 const genre = require("../models/genreModel")
+const fileUpload = require("express-fileupload")
 const cloudinary = require("cloudinary").v2
 
 
