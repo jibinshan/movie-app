@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 
 const generatetockens = (userid)=>{
-   return jwt.sign({_id:userid},process.env.ACCESS_TOKEN_SECRET)
+   return jwt.sign({_id:userid},this-is-a-secret)
 }
 module.exports = {generatetockens}
