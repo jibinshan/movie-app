@@ -112,7 +112,7 @@ const postmovie = async(req,res)=>{
           return res.status(400).json("image is required")
         }else if(req.files) {
                 const file = req.files.photo
-                response =  await cloudinary.uploader.upload(file.tempFilePath,{folder:"image"})
+                response =  await cloudinary.uploader.upload(file.tempFilePath,{folder:"/tmp"})
                       let genres = await JSON.parse(genre)
                        await movie.create({
                          imagepath:response.url,
