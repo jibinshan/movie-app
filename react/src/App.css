@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these styles to your existing CSS file or create a new one */
+
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* Individual page link style */
+.pagination a {
+  padding: 10px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid grey ;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Style for the active page link */
+.pagination .active a {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Hover effect on page links */
+.pagination a:hover {
+  background-color: #ddd;
+}
+input[type=file]::file-selector-button {
+  height: 50px;
+  border: none;
+  background-color: rgb(169, 169, 237);
+  border-radius: 10%;
+}
+
+input[type=file]::file-selector-button:hover{
+  background-color:    rgb(25, 102, 169);
+  color: aliceblue;
+} 
