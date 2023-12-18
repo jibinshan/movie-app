@@ -2,7 +2,6 @@ const movie = require("../models/movieModel")
 const genre = require("../models/genreModel")
 const cloudinary = require("cloudinary").v2
 
-
 const getmovie = async(req,res)=>{
     try {
         const MovieList = await movie.find()
@@ -112,10 +111,8 @@ const postmovie = async(req,res)=>{
            if( req.files === null){
           return res.status(400).json("image is required")
         }else if(req.files) {
-                console.log(req.files);
                 const file = req.files.photo
                 response =  await cloudinary.uploader.upload(file.tempFilePath,{folder:"image"})
-                      // console.log(response,"====response");
                       let genres = await JSON.parse(genre)
                        await movie.create({
                          imagepath:response.url,
