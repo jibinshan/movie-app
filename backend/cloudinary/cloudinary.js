@@ -13,7 +13,6 @@ cloudinary.config({
 
 const cloudinaryware = (req,res,next)=>{
     req.cloudinary = cloudinary
-    console.log(cloudinary.config());
     next()
 }
 
