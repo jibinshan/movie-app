@@ -5,15 +5,11 @@ const connectDB = require("./config/config")
 const userRoute = require("./router/userRoute")
 const movieRoute = require("./router/movieRoute")
 const genreRoute = require("./router/genreRoute")
-const fileUpload = require("express-fileupload")
 
 const app = express()
 require("dotenv").config()
 connectDB()
 app.use(cloudinaryware)
-app.use(fileUpload({
-    useTempFiles:true,
-}))
 app.use(express.json())
 app.use(cors())
 

@@ -56,9 +56,10 @@ const api = "https://movie-app-server-jibinshans-projects.vercel.app/movie"
 const jsonstring =JSON.stringify(check)
 const handlesubmit = async()=>{
   setLoading(true);
+  const file = uploads.Image
   const Formdata = new FormData()
   Formdata.append("_id",movieids ? movieids : "")
-  Formdata.append("photo",uploads.Image)
+  Formdata.append("upload_file",file)
   Formdata.append("title",uploads.title)
   Formdata.append("rating",ratings)
   Formdata.append("description",uploads.description)
