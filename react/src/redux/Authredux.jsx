@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import {  toast } from 'react-toastify';
 
-const api = "https://movie-app-server-jibinshans-projects.vercel.app/user/login"
+const api = "http://localhost:2010/user/login"
 export const loginAsync = createAsyncThunk("Auth/login",async (input,{dispatch})=>{
     try {
         const response = await axios(api,{

@@ -51,7 +51,7 @@ const handlefile = (e)=>{
         setUIimage(URL.createObjectURL(img))  
       }
     }
-const api = "https://movie-app-server-jibinshans-projects.vercel.app/movie"
+const api = "http://localhost:2010/movie"
 // const genreapi = "http://localhost:2010/genre"
 const jsonstring =JSON.stringify(check)
 const handlesubmit = async()=>{

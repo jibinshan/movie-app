@@ -11,7 +11,7 @@ function Newpassword() {
       password:"",
     })
     const navigate = useNavigate()
-    const api = "https://movie-app-server-jibinshans-projects.vercel.app/user/changepassword"
+    const api = "http://localhost:2010/user/changepassword"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {

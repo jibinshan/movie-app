@@ -24,7 +24,7 @@ function Signup() {
             [e.target.name]:e.target.value
           }))
     }
-    const api = "https://movie-app-server-jibinshans-projects.vercel.app/user/signup"
+    const api = "http://localhost:2010/user/signup"
     const fetchsignup = async()=>{
      try {
       const response = await axios(api,{

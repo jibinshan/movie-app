@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const api = "https://movie-app-server-jibinshans-projects.vercel.app/genre"
+const api = "http://localhost:2010/genre"
 export const fetchgenre = createAsyncThunk("Genre/fetchgenre", async()=>{
     try {
        const response = await axios.get(api) 
