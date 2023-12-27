@@ -24,7 +24,7 @@ function Signup() {
             [e.target.name]:e.target.value
           }))
     }
-    const api = "https://movieapp-backend-pdqb.onrender.com/user/signup"
+    const api = "https://movieapp-server-ax0c.onrender.com/user/signup"
     const fetchsignup = async()=>{
      try {
       const response = await axios(api,{

@@ -51,7 +51,7 @@ const handlefile = (e)=>{
         setUIimage(URL.createObjectURL(img))  
       }
     }
-const api = "https://movieapp-backend-pdqb.onrender.com/movie"
+const api = "https://movieapp-server-ax0c.onrender.com/movie"
 // const genreapi = "http://localhost:2010/genre"
 const jsonstring =JSON.stringify(check)
 const handlesubmit = async()=>{

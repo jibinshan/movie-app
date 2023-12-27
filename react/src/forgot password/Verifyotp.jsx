@@ -8,7 +8,7 @@ function Verifyotp() {
     const [loading,setLoading] = useState(false)
     const [otp,setOtp] = useState("")
     const navigate = useNavigate()
-    const api = "https://movieapp-backend-pdqb.onrender.com/user/verifyotp"
+    const api = "https://movieapp-server-ax0c.onrender.com/user/verifyotp"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {

@@ -9,7 +9,7 @@ function Forgotpassword() {
     const [loading,setLoading] = useState(false)
     const [email,setEmail] = useState("")
     const navigate = useNavigate()
-    const api = "https://movieapp-backend-pdqb.onrender.com/user/forgottenpassword"
+    const api = "https://movieapp-server-ax0c.onrender.com/user/forgottenpassword"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {

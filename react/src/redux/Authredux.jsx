@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import {  toast } from 'react-toastify';
 
-const api = "https://movieapp-backend-pdqb.onrender.com/user/login"
+const api = "https://movieapp-server-ax0c.onrender.com/user/login"
 export const loginAsync = createAsyncThunk("Auth/login",async (input,{dispatch})=>{
     try {
         const response = await axios(api,{

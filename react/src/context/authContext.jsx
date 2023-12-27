@@ -9,7 +9,7 @@ export const AuthProvider = ({children})=>{
     const navigate = useNavigate()
    const [auth,setAuth] = useState(false)
    const [data,setData] = useState('')
-   const api = "https://movieapp-backend-pdqb.onrender.com/user/login"
+   const api = "https://movieapp-server-ax0c.onrender.com/user/login"
    const login = async(input)=>{
     try {
         const response = await axios(api,{

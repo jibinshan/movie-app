@@ -12,7 +12,7 @@ function Watchlater() {
     const [later,setLater] = useState([])
     const [loading,setLoading] = useState(true)
     const skeleton = [1,2,3,4,5,6]
-    const api = `https://movieapp-backend-pdqb.onrender.com/user/watchlater/${userid}`
+    const api = `https://movieapp-server-ax0c.onrender.com/user/watchlater/${userid}`
     const fetchdata = async()=>{
       const response = await axios(api)
       setLater(response.data.movie);

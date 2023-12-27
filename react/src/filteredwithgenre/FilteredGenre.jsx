@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 function FilteredGenre({selectedgenre}) {
     const {genres} = useSelector((state)=>state.Genres)
     const [data,setData] = useState([])
-    const api ="https://movieapp-backend-pdqb.onrender.com/movie/filter"
+    const api ="https://movieapp-server-ax0c.onrender.com/movie/filter"
     const fetchdata = async()=>{
         try {
             const response = await axios(api,{
@@ -25,7 +25,6 @@ function FilteredGenre({selectedgenre}) {
     genres.filter((genres)=>
     genres.title.toLowerCase().includes(selectedgenre.toLowerCase())
     )
-    console.log(data,"===search");
     
   return (
     <div className='bg-slate-200 h-screen'>

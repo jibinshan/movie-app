@@ -11,7 +11,7 @@ function Newpassword() {
       password:"",
     })
     const navigate = useNavigate()
-    const api = "https://movieapp-backend-pdqb.onrender.com/user/changepassword"
+    const api = "https://movieapp-server-ax0c.onrender.com/user/changepassword"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {

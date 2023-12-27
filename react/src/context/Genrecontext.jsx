@@ -6,7 +6,7 @@ export const GenreContext = createContext()
 
 export const GenreProvider = ({children})=>{
     const [genre,setGenre] = useState([])
-    const api = "https://movieapp-backend-pdqb.onrender.com/genre"
+    const api = "https://movieapp-server-ax0c.onrender.com/genre"
     const fetchmovie = async()=>{
       try {
         const response = await axios(api)
