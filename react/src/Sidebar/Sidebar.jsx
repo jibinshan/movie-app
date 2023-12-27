@@ -32,7 +32,7 @@ function Sidebar() {
         </div>
        
        <div className={menu ?"flex flex-col items-center justify-center gap-4 bg-slate-800 p-4 w-1/2 mr-3 align text-white mr-0 ml-auto rounded-md z-40" : "hidden"}>
-           <NavLink to={"/movie"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
+           <NavLink to={"/"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
 
             <h3 className='flex gap-2 items-center pl-2'>
             <IoMdHome/>
@@ -40,7 +40,7 @@ function Sidebar() {
               </h3>
            </NavLink>
               {localStorage.role === "admin" ?
-              <NavLink to={"/"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
+              <NavLink to={"/movie"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
            <h3 className='flex gap-2 items-center pl-2'>
            <RiVideoAddFill/>
            ADD MOVIE
