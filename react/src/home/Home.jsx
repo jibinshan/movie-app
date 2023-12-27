@@ -117,7 +117,7 @@ function Home({setSelectedgenre}) {
       <Sidebar/>
       <div className="flex flex-col mt-24 xl:mt-0  ">
          <div className="flex p-2  xl:p-5 bg-slate-500 xl:bg-slate-900 text-white fixed w-full gap-3 xl:gap-0 ">
-         {isTabletOrMobile ?"": <h3 className='xl:w-1/4 xl:text-red-400 xl:font-bold xl:text-xl xl:text-left '>cinecipher</h3> } 
+         {isTabletOrMobile ?"": <h3 className='xl:w-1/4 xl:text-red-500 xl:font-bold xl:text-xl xl:text-left text-lg font-bold'>cinecipher</h3> } 
          <div className='flex xl:w-3/4 xl:pl-32 w-full gap-2 '>
          <input className='pl-2 w-4/5 xl:w-1/2 bg-slate-600 outline-none rounded-md shadow-lg' placeholder={isTabletOrMobile ? 'genre' : 'search your fav genre'} type="text" onChange={handlegenreinput}/>
          <button className='bg-blue-300 p-1 pl-3 pr-3 rounded-lg text-black hover:bg-blue-200 ' onClick={handlesearch}>search</button>
