@@ -36,10 +36,10 @@ function FilteredGenre({selectedgenre}) {
         <Sidebar/>
         <div className='bg-slate-200 h-screen xl:ml-40 flex flex-col p-4'>
         {loading ?
-             <div className="flex flex-col justify-between  border-slate-700 items-center xl:pr-4 shadow-lg w-full h-fit pt-24 xl:pt-0 ">
+             <div className="flex flex-col justify-between  border-slate-700 items-center xl:pr-4 shadow-lg w-full h-fit pt-24 xl:pt-0  ">
              {skeleton.map((i)=>{
                return(
-                 <div className='flex  gap-3 w-full bg-zinc-800 rounded-md overflow-hidden h-60 mb-4'key={i}>
+                 <div className='flex  gap-3 w-full bg-zinc-800 rounded-md overflow-hidden h-32 mb-4'key={i}>
                 <div className='w-2/6 h-full xl:w-1/5'> <Skeleton height={"100%"}/> </div>
                <div className='flex justify-between items-center pl-2 pr-2 w-full'>
                <h4 className='font-bold text-md xl:text-lg text-slate-200 text-center w-full text-start '> <Skeleton/> </h4>
