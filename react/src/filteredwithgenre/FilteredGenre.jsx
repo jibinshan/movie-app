@@ -36,7 +36,7 @@ function FilteredGenre({selectedgenre}) {
         <Sidebar/>
         <div className='bg-slate-200 h-screen xl:ml-40 flex flex-col p-4'>
         {loading ?
-             <div className="flex flex-col justify-between  border-slate-700 items-center xl:pr-4 shadow-lg w-full h-fit ">
+             <div className="flex flex-col justify-between  border-slate-700 items-center xl:pr-4 shadow-lg w-full h-fit pt-24 xl:pt-0 ">
              {skeleton.map((i)=>{
                return(
                  <div className='flex  gap-3 w-full bg-zinc-800 rounded-md overflow-hidden h-60 mb-4'key={i}>
