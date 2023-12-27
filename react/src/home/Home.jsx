@@ -2,7 +2,6 @@ import  { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate';
-import Skeleton from 'react-loading-skeleton'
 import StarRating from '../components/StarRating'
 import { ToastContainer,toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -13,45 +12,41 @@ import { useMediaQuery } from 'react-responsive'
 // import { useMovieupload } from '../context/movieContext';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updatehandle } from '../redux/Movieredux';
 import Homeskeleton from './Homeskeleton';
+import {  homeasync, homedeleteasync } from '../redux/Homeredux';
 function Home({setSelectedgenre}) {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1025px)' })
    const dispatch = useDispatch()
+   const {movie,totalPages,loading} = useSelector(state => state.Home)
   //  const {setUpload,setRating,setGenreupdate,setMovieid} = useMovieupload()
    const navigate = useNavigate()
-    const [movie,setMovie] = useState([])
-    const [loading,setLoading] = useState(true)
     const [currentpage,setCurrentpage] = useState(1)
-    const [totalPages,setTotalpages] = useState(1)
     const userapi = `https://movieapp-server-ax0c.onrender.com/user/watchlater/${localStorage?.userid}`
-    const api = "https://movieapp-server-ax0c.onrender.com/movie/pagination"
     const fetchdata = async()=>{
        try {
-        const response = await axios(api,{
-          method:"GET",
-          headers:{
-            authorization:localStorage.getItem("acesstocken")
-          },
-          params: {
-            page: currentpage,
-            limit: 4,
+        // const response = await axios(api,{
+        //   method:"GET",
+        //   headers:{
+        //     authorization:localStorage.getItem("acesstocken")
+        //   },
+        //   params: {
+        //     page: currentpage,
+        //     limit: 4,
      
-          },
-        },
-        )
-        const data = response.data
-        setMovie(data.data);
-        setTotalpages(data.totalpages)
-        setLoading(false)
-      } catch (error) {
+        //   },
+        // },
+        // )
+         await dispatch(homeasync(currentpage))
+        } catch (error) {
         console.log(error.message);
-        }
       }
-      useEffect(()=>{
-        fetchdata()
-
+    }
+    // setMovie(data.data);
+    // setTotalpages(data.totalpages)
+    useEffect(()=>{
+      fetchdata()
     },[currentpage])
     const handlePageChange = (e)=>{
       setCurrentpage(e.selected+1)
@@ -79,11 +74,10 @@ function Home({setSelectedgenre}) {
     }
     const handledeletemovie = async(movieid,title)=>{
        try {
-        const response = await axios(`https://movieapp-server-ax0c.onrender.com/movie/delete/${movieid}`,{
-          method:"DELETE"
-        })
-        setMovie(response.data.data)
-        setTotalpages(response.data.totalpages)
+        // const response = await axios(`https://movieapp-server-ax0c.onrender.com/movie/delete/${movieid}`,{
+        //   method:"DELETE"
+        // })
+        await dispatch(homedeleteasync(movieid))
         toast.success(`${title} deleted`)
        } catch (error) {
         console.log("internal error")
@@ -136,7 +130,7 @@ function Home({setSelectedgenre}) {
                 <img className='w-1/2 object-cover' src={movies.imagepath} alt="" />
                 <div className="w-1/2 p-2 flex flex-col justify-between xl:justify-start ">
                 <div className="flex items-center gap-1 xl:mb-4">
-                <h4 className='font-bold text-md xl:text-lg  xl:ms-2 text-slate-200 '>{movies.title}</h4>
+                <h4 className='font-bold text-md xl:text-lg  xl:ms-2 text-slate-200 w-4/5'>{movies.title}</h4>
                 <div className='flex text-slate-200 justify-end items-end gap-6 xl:text-2xl w-full'>
                {
                 localStorage.role === "admin"?

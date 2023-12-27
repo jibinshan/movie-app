@@ -2,10 +2,13 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import { useSelector } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
 
 function FilteredGenre({selectedgenre}) {
     const {genres} = useSelector((state)=>state.Genres)
     const [data,setData] = useState([])
+    const skeleton = [1,2,3,4]
+    const [loading,setLoading] = useState(true)
     const api ="https://movieapp-server-ax0c.onrender.com/movie/filter"
     const fetchdata = async()=>{
         try {
@@ -15,7 +18,9 @@ function FilteredGenre({selectedgenre}) {
                 }
             })
          setData(response)
+         setLoading(false)
         } catch (error) {
+                setLoading(false)
                console.log(error.response);
         }
     }
@@ -30,13 +35,27 @@ function FilteredGenre({selectedgenre}) {
     <div className='bg-slate-200 h-screen'>
         <Sidebar/>
         <div className='bg-slate-200 h-screen xl:ml-40 flex flex-col p-4'>
+        {loading ?
+             <div className="flex flex-col justify-between  border-slate-700 items-center xl:pr-4 shadow-lg w-full h-fit ">
+             {skeleton.map((i)=>{
+               return(
+                 <div className='flex  gap-3 w-full bg-zinc-800 rounded-md overflow-hidden h-60 mb-4'key={i}>
+                <div className='w-2/6 h-full xl:w-1/5'> <Skeleton height={"100%"}/> </div>
+               <div className='flex justify-between items-center pl-2 pr-2 w-full'>
+               <h4 className='font-bold text-md xl:text-lg text-slate-200 text-center w-full text-start '> <Skeleton/> </h4>
+               </div>
+             </div>
+                  )
+                 })
+                }
+                 </div>:
+                 <div>
 
-        { data.status === 200 ? 
+       {  data.status === 200 ?
         
         <div className='flex flex-col gap-2 mt-24 xl:mt-0'>
-
+          
             {data.data.map((movie,key)=>{
-                console.log(movie);
                 return(
                     <div key={key} className='flex justify-between border-2 border-slate-700 items-center xl:pr-4 shadow-lg w-full h-fit '>
                     <img className='w-2/6 h-full xl:w-1/5' src={movie.imagepath} alt="" />
@@ -55,8 +74,11 @@ function FilteredGenre({selectedgenre}) {
             })}
             </div>
         
-        : <h1 className='h-screen flex justify-center items-center font-bold text-lg '>Genre you entered not found</h1>}
+        : <h1 className='h-screen flex justify-center items-center font-bold text-lg '>Genre you entered not found</h1>
+        }
      
+        </div>
+}
         </div>
     </div>
   )
