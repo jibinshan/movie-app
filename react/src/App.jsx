@@ -13,11 +13,13 @@ import Verifyotp from './forgot password/Verifyotp';
 import Newpassword from './forgot password/Newpassword';
 import './App.css';
 import Roleprotected from './protectedRoute/Roleprotected';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
   const [selectedgenre,setSelectedgenre] = useState('')
   return (
     <div className="bg-slate-200">
+        <SkeletonTheme baseColor="#808080" highlightColor="#ccc">
       <Routes>
         <Route path='/' element={<Home setSelectedgenre={setSelectedgenre}/>}/>
         <Route path='/login' element={<Login/>}/>
@@ -34,6 +36,7 @@ function App() {
          <Route path="/watchlater/:userid" element={<Watchlater/>}/>
         </Route>
       </Routes>
+  </SkeletonTheme>
       
     </div>
   );

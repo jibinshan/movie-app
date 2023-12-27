@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const api = "http://localhost:2010/genre"
+const api = "https://movieapp-backend-pdqb.onrender.com/genre"
 export const fetchgenre = createAsyncThunk("Genre/fetchgenre", async()=>{
     try {
        const response = await axios.get(api) 

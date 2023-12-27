@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 function FilteredGenre({selectedgenre}) {
     const {genres} = useSelector((state)=>state.Genres)
     const [data,setData] = useState([])
-    const api ="http://localhost:2010/movie/filter"
+    const api ="https://movieapp-backend-pdqb.onrender.com/movie/filter"
     const fetchdata = async()=>{
         try {
             const response = await axios(api,{

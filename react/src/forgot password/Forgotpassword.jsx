@@ -9,7 +9,7 @@ function Forgotpassword() {
     const [loading,setLoading] = useState(false)
     const [email,setEmail] = useState("")
     const navigate = useNavigate()
-    const api = "http://localhost:2010/user/forgottenpassword"
+    const api = "https://movieapp-backend-pdqb.onrender.com/user/forgottenpassword"
     const handlesubmit = async(e)=>{
         e.preventDefault()
         try {
@@ -50,9 +50,9 @@ function Forgotpassword() {
           <ClipLoader color='#36D7B7' loading={loading} size={30}/>
         </div>
         :"Submit"}</button>
+        <p className='text-center'>click here to <Link className='border-solid border-b border-blue-500 text-blue-500' to="/login">Login</Link> </p>
         {/* {data.status !== 200 && <p className="text-red-500 text-center">{data.data}</p>} */}
       </form>
-        <p>click here to create account <Link className='border-solid border-b border-blue-500 text-blue-500' to="/login">Login</Link> </p>
         <ToastContainer />
     </div>
     </div>

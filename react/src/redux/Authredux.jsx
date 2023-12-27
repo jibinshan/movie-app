@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import {  toast } from 'react-toastify';
 
-const api = "http://localhost:2010/user/login"
+const api = "https://movieapp-backend-pdqb.onrender.com/user/login"
 export const loginAsync = createAsyncThunk("Auth/login",async (input,{dispatch})=>{
     try {
         const response = await axios(api,{
@@ -45,16 +45,16 @@ const Authslice = createSlice({
        },
     },
     extraReducers:(builder)=>{
-        builder.addCase(loginAsync.pending,(state,action)=>{
+        builder.addCase(loginAsync.pending,(state)=>{
             console.log("pending");
             state.loadings = true
         })
-        builder.addCase(loginAsync.fulfilled,(state,action)=>{
+        builder.addCase(loginAsync.fulfilled,(state)=>{
             console.log("start");
             state.loadings = false
             
         })
-        builder.addCase(loginAsync.rejected,(state,action)=>{
+        builder.addCase(loginAsync.rejected,(state)=>{
             console.log("end");
            state.loadings = false
         })

@@ -13,7 +13,7 @@ function Genre() {
   const [addgenre,setAddgenre] = useState("")
   const [genreid,setGenreid] = useState(null)
   const [error,seterror] = useState("")
-  const api = "http://localhost:2010/genre"
+  const api = "https://movieapp-backend-pdqb.onrender.com/genre"
   useEffect(()=>{
     dispatch(fetchgenre())
   },[])
@@ -72,16 +72,16 @@ function Genre() {
             <div className="flex flex-col">
             <h4 className='text-left font-bold'>Genre</h4>
             <div className='flex gap-2 w-full'>
-            <input value={addgenre} type="text" placeholder="genre" className='rounded-sm shadow-lg p-1 text-black w-4/5' onChange={handleinputchange}/>
-            <button className='rounded-md bg-blue-300 text-black text-sm p-1 hover:bg-blue-400' onClick={handlesubmit}>SUBMIT</button>
+            <input value={addgenre} type="text" placeholder="genre" className='rounded-sm shadow-lg p-2 pl-4 text-black w-4/5' onChange={handleinputchange}/>
+            <button className='rounded-md bg-blue-300 text-black text-sm p-1 hover:bg-blue-400 pl-3 pr-3' onClick={handlesubmit}>SUBMIT</button>
              </div>
             </div>
-            <div className="grid gap-3 grid-cols-3">
+            <div className="grid gap-3 grid-cols-2">
                    {genres.map((genres,key)=>{
                     return(
-                      <div key={key} className='bg-slate-600 rounded-md p-1 flex flex-col gap-1 justify-center items-center shadow-lg'>
+                      <div key={key} className='bg-slate-600 rounded-md p-1 flex gap-1 justify-center items-center shadow-lg p-4'>
                         <p>{genres.title}</p>
-                        <div className='w-full flex justify-end '>
+                        <div className='w-full flex gap-2 justify-end '>
                           <div className='hover:text-slate-400' onClick={()=>handleupdate(genres._id,genres.title)}>
                           <FaPen/>
                           </div>

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { IoMdHome } from "react-icons/io";
 import { RiVideoAddFill } from "react-icons/ri";
@@ -11,7 +11,7 @@ import { IoMdClose } from "react-icons/io";
 function Sidebar() {
   const [menu,setMenu] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1025px)' })
-    const navigate = useNavigate()
+  const navigate = useNavigate()
     const handlemenu = ()=>{
       setMenu((prev)=>
          !prev
@@ -31,32 +31,42 @@ function Sidebar() {
           </div>
         </div>
        
-       <div className={menu ?"flex flex-col items-center justify-center gap-4 bg-slate-800 p-4 w-1/2 mr-3 align text-white mr-0 ml-auto rounded-md" : "hidden"}>
-            <h3 className='flex  items-center  gap-2 hover:bg-slate-400  focus:bg-slate-400 w-full text-left' onClick={()=>navigate("/")}>
+       <div className={menu ?"flex flex-col items-center justify-center gap-4 bg-slate-800 p-4 w-1/2 mr-3 align text-white mr-0 ml-auto rounded-md z-40" : "hidden"}>
+           <NavLink to={"/movie"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
+
+            <h3 className='flex gap-2 items-center pl-2'>
             <IoMdHome/>
               HOME
               </h3>
+           </NavLink>
               {localStorage.role === "admin" ?
-           <h3 className='flex  items-center gap-2 hover:bg-slate-400  focus:bg-slate-400 w-full text-left' onClick={()=>navigate("/movie")}>
+              <NavLink to={"/"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
+           <h3 className='flex gap-2 items-center pl-2'>
            <RiVideoAddFill/>
            ADD MOVIE
            </h3>
+              </NavLink>
            :
            ""
          }
           {localStorage.role === "admin" ?
-            <h3 className='flex  items-center  gap-2 hover:bg-slate-400  focus:bg-slate-400 w-full text-left' onClick={()=>navigate("/genre")}>
+          <NavLink to={"/genre"} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
+
+            <h3 className='flex gap-2 items-center pl-2'>
               <TfiThemifyFaviconAlt/>
               GENRE
               </h3>
+          </NavLink>
           :
         ""
-        }
-            <h3 className='flex  items-center  gap-2 hover:bg-slate-400  focus:bg-slate-400 w-full text-left' onClick={()=>navigate(`/watchlater/${localStorage.userid}`)}>
+        } 
+           <NavLink to={`/watchlater/${localStorage.userid}`} className={({isActive})=> isActive ? 'flex  items-center text-slate-900  gap-2 bg-slate-300 w-full text-left':'flex  items-center  gap-2 hover:bg-slate-400 w-full text-left'}>
+             <h3 className='flex  gap-2 items-center pl-2'>
               <MdWatchLater/>
               WATCHLATER
               </h3>
-        <h3 className='flex  items-center  gap-2 hover:bg-slate-400  focus:bg-slate-400 w-full text-left' onClick={()=>{
+           </NavLink>
+        <h3 className='flex  items-center  gap-2  hover:text-slate-900 hover:bg-slate-400  focus:bg-slate-400 w-full text-left pl-2' onClick={()=>{
            localStorage.clear()
           navigate("/login")}
           }>
@@ -68,38 +78,47 @@ function Sidebar() {
       </div>
       
       
-      
       :
-    <div className='h-screen  rounded-r-2xl  bg-slate-900 flex flex-col justify-between py-3'>
+    <div className='h-screen    bg-slate-900 flex flex-col justify-between py-3'>
         <div className="flex flex-col gap-2">
           <h2 className='font-bold text-lg text-red-500 p-3 text-left'>CineCipher</h2>
-            <h3 className='font-bold cursor-pointer text-white hover:bg-slate-300 focus:bg-slate-300  text-md flex items-center gap-2 p-3' onClick={()=>navigate("/")}>
+          <NavLink to={"/"} className={({isActive})=>(isActive?'font-bold cursor-pointer text-slate-900 bg-slate-300  text-md flex items-center  gap-2 p-3' :'font-bold cursor-pointer text-slate-300 hover:text-slate-900 hover:bg-slate-300 text-md flex items-center  gap-2 p-3')}>
+             <h3 className="flex justify-center items-center gap-2">
             <IoMdHome/>
               HOME
               </h3>
+          </NavLink>
           {localStorage.role === "admin" ? 
-          <h3 className='font-bold cursor-pointer text-white hover:bg-slate-300 focus:bg-slate-300  text-md flex items-center  gap-2 p-3' onClick={()=>navigate("/movie")}>
+          <NavLink to={"/movie"} className={({isActive})=>(isActive ?'font-bold cursor-pointer text-slate-900 bg-slate-300  text-md flex items-center  gap-2 p-3' :'font-bold cursor-pointer text-slate-300 hover:text-slate-900 hover:bg-slate-300 text-md flex items-center  gap-2 p-3' )}>
+
+          <h3 className="flex justify-center items-center gap-2">
           <RiVideoAddFill/>
           ADD MOVIE
           </h3>
+          </NavLink>
           :
           ""  
         }
              {localStorage.role === "admin" ? 
-        <h3 className='font-bold cursor-pointer text-white hover:bg-slate-300 focus:bg-slate-300  text-md flex items-center  gap-2 p-3' onClick={()=>navigate("/genre")}>
+        <NavLink to={"/genre"} className={({isActive})=>(isActive ?'font-bold cursor-pointer text-slate-900 bg-slate-300  text-md flex items-center  gap-2 p-3' :'font-bold cursor-pointer text-slate-300 hover:text-slate-900 hover:bg-slate-300 text-md flex items-center  gap-2 p-3' )}>
+         <h3 className="flex justify-center items-center gap-2">
           <TfiThemifyFaviconAlt/>
           GENRE
           </h3>
+             </NavLink>
           
           :
           ""  
         }
-            <h3 className='font-bold cursor-pointer text-white hover:bg-slate-300 focus:bg-slate-300  text-md flex items-center  gap-2 p-3' onClick={()=>navigate(`/watchlater/${localStorage.userid}`)}>
+             <NavLink to={`/watchlater/${localStorage.userid}`} className={({isActive})=>(isActive ?'font-bold cursor-pointer text-slate-900 bg-slate-300  text-md flex items-center  gap-2 p-3' :'font-bold cursor-pointer text-slate-300 hover:text-slate-900 hover:bg-slate-300 text-md flex items-center  gap-2 p-3' )}>
+
+            <h3 className="flex justify-center items-center gap-2">
               <MdWatchLater/>
               WATCHLATER
               </h3>
+             </NavLink>
         </div>
-        <h3 className='font-bold cursor-pointer text-white hover:bg-slate-300 focus:bg-slate-300 text-md flex items-center  gap-2 p-3' onClick={()=>{
+        <h3 className='font-bold cursor-pointer text-slate-300 hover:text-slate-900 hover:bg-slate-300 focus:bg-slate-300 text-md flex items-center  gap-2 p-3' onClick={()=>{
            localStorage.clear()
           navigate("/login")}
           }>

@@ -24,7 +24,7 @@ function Signup() {
             [e.target.name]:e.target.value
           }))
     }
-    const api = "http://localhost:2010/user/signup"
+    const api = "https://movieapp-backend-pdqb.onrender.com/user/signup"
     const fetchsignup = async()=>{
      try {
       const response = await axios(api,{
@@ -40,9 +40,9 @@ function Signup() {
      }
     }
   return (
-    <div className='w-screen h-screen bg-slate-200 flex flex-col justify-center items-center gap-8'>
+    <div className='w-screen h-screen bg-slate-200 flex flex-col justify-center items-center gap-8 '>
       <form action=""  className='flex flex-col gap-4 w-fit bg-white p-4 rounded-md shadow-xl'>
-      <h2 className='font-bold text-lg'>Signup</h2>
+      <h2 className='font-bold text-lg text-center'>Signup</h2>
         <div className="flex flex-col text-left">
             <label className='font-bold' htmlFor="">Username</label>
             <input type="text"
@@ -91,11 +91,11 @@ function Signup() {
         </div>
         <button onClick={handlesubmit} className='bg-blue-900 hover:bg-blue-500 text-white p-1 rounded-md ' >Signup</button>
         {data && <p className={data.status !== 200 ?"text-red-500 text-center":"text-green-500 text-center"}>{data.data}</p>}
+        <h2 className='text-center'>
+          Already have Account or Login <Link className='border-solid border-b border-blue-500 text-blue-500' to="/login">Click here</Link>
+          </h2>
         <ToastContainer/>
       </form>
-        <h2>
-          click here to <Link className='border-solid border-b border-blue-500 text-blue-500' to="/login">login</Link>
-          </h2>
     </div>
   )
 }

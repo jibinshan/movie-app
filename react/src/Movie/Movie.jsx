@@ -51,7 +51,7 @@ const handlefile = (e)=>{
         setUIimage(URL.createObjectURL(img))  
       }
     }
-const api = "http://localhost:2010/movie"
+const api = "https://movieapp-backend-pdqb.onrender.com/movie"
 // const genreapi = "http://localhost:2010/genre"
 const jsonstring =JSON.stringify(check)
 const handlesubmit = async()=>{
@@ -145,11 +145,11 @@ const handleratingchange = (e)=>{
             {UIimage || uploads.Image ? <img className='h-24 w-24' src={UIimage === "" ? uploads.Image : UIimage} alt="" />:""}
             <div className="title">
             <h4 className='font-bold'>Title</h4>
-            <input value={uploads.title} className='w-full border pl-1 shadow outline-none rounded-md' type="text" name='title' placeholder="Title" onChange={handletitlechange}/>
+            <input value={uploads.title} className='w-full border p-2 pl-4 shadow outline-none rounded-md ' type="text" name='title' placeholder="Title" onChange={handletitlechange}/>
             </div>
             <div className="description">
             <h4 className='font-bold'>Description</h4>
-            <input value={uploads.description} className='w-full border pl-1 shadow outline-none rounded-md h-14' type="text" name='description' placeholder="Description" onChange={handledescriptionchange}/>
+            <input value={uploads.description} className='w-full border shadow outline-none rounded-md pt-2 pb-8 pl-4' type="text" name='description' placeholder="Description" onChange={handledescriptionchange}/>
             </div>
             <div className="rating">
             <h4 className='font-bold'>Rating</h4>
@@ -170,11 +170,8 @@ const handleratingchange = (e)=>{
                  genres.map((genres,key)=>{
                   return(
                     <div key={key} className="flex gap-1">
-                    <label htmlFor="">{genres.title}</label>
-                 
-                      <input type="checkbox" value={genres._id} checked={check.includes(genres._id) || false}  onChange={handlecheckchange}/>
-            
-                    
+                      <input type="checkbox"  id={`checkbox_${genres._id}`} value={genres._id} checked={check.includes(genres._id) || false}  onChange={handlecheckchange}/>
+                      <label htmlFor={`checkbox_${genres._id}`}>{genres.title}</label>        
                     </div>
                   )
                 })
